@@ -1,0 +1,33 @@
+version: '2.0'
+services:
+
+  server1:
+    image: httpd:2.4
+    volumes:
+      - ./server1:/usr/local/apache2/htdocs
+    ports:
+      - 8001:80
+    restart: always
+
+  server2:
+    image: httpd:2.4
+    volumes:
+      - ./server2:/usr/local/apache2/htdocs
+    ports:
+      - 8002:80
+    restart: always
+
+  server3:
+    image: httpd:2.4
+    volumes:
+      - ./server3:/usr/local/apache2/htdocs
+    ports:
+      - 8003:80
+    restart: always
+
+  load-balancer:
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginx/loadbalancer.conf:/etc/nginx/conf.d/default.conf
