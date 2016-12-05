@@ -30,4 +30,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./nginx/loadbalancer.conf:/etc/nginx/conf.d/default.conf
+      # # Round Robin
+      # - ./nginx/round-robin-lb.conf:/etc/nginx/conf.d/default.conf
+      # Session Persistence
+      - ./nginx/session-persistence-lb.conf:/etc/nginx/conf.d/default.conf
